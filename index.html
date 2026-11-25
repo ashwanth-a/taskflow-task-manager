@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TaskFlow helps you organize daily tasks, set priorities and track your progress.">
+  <meta name="theme-color" content="#f5f6f8">
+  <title>TaskFlow — Make room for what matters</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">✓</span> taskflow<span class="brand-period">.</span></a>
+      <p class="side-label">WORKSPACE</p>
+      <nav class="filters" aria-label="Task filters">
+        <button class="filter active" data-filter="all"><span>▦</span> All tasks <b id="all-count">0</b></button>
+        <button class="filter" data-filter="active"><span>◷</span> In progress <b id="active-count">0</b></button>
+        <button class="filter" data-filter="completed"><span>✓</span> Completed <b id="completed-count">0</b></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="tip-card"><span>✦ A small reminder</span><p>Progress is built one task at a time. Keep going.</p></div>
+        <div class="profile"><div class="avatar">A</div><div><strong>My workspace</strong><small>Personal planner</small></div></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><div><p class="date-line" id="today-date">YOUR DAY</p><h1>Good things take <span>focus.</span></h1></div><div class="top-tag"><i></i> YOUR PERSONAL SPACE</div></header>
+      <section class="overview">
+        <article class="welcome-card"><div><p class="overline">DAILY OVERVIEW</p><h2>Make today<br>count.</h2><p id="welcome-copy">A clear plan makes a lighter day.</p></div><div class="progress-ring" id="progress-ring"><div><strong id="progress-value">0%</strong><small>complete</small></div></div></article>
+        <div class="stat-card"><span class="stat-icon purple">▦</span><small>Total tasks</small><strong id="stat-total">0</strong><span class="stat-foot">In your workspace</span></div>
+        <div class="stat-card"><span class="stat-icon orange">◷</span><small>To do</small><strong id="stat-active">0</strong><span class="stat-foot">Still in progress</span></div>
+        <div class="stat-card"><span class="stat-icon green">✓</span><small>Completed</small><strong id="stat-completed">0</strong><span class="stat-foot">Nice work!</span></div>
+      </section>
+
+      <section class="tasks-section">
+        <div class="section-head"><div><p class="overline">YOUR LIST</p><h2>Tasks <span id="visible-count">0</span></h2></div><div class="tools"><label class="search-box"><span>⌕</span><input id="search-input" type="search" placeholder="Search tasks..." aria-label="Search tasks"></label><button class="clear-button" id="clear-completed" type="button">Clear completed</button></div></div>
+
+        <form class="add-form" id="task-form">
+          <label class="sr-only" for="task-title">Task title</label><input id="task-title" type="text" maxlength="90" placeholder="What needs to get done?" required>
+          <label class="sr-only" for="task-category">Category</label><select id="task-category"><option value="Personal">Personal</option><option value="Study">Study</option><option value="Work">Work</option><option value="Other">Other</option></select>
+          <label class="sr-only" for="task-priority">Priority</label><select id="task-priority"><option value="Medium">Medium priority</option><option value="High">High priority</option><option value="Low">Low priority</option></select>
+          <label class="sr-only" for="task-due">Due date</label><input id="task-due" type="date" aria-label="Due date">
+          <button class="add-button" type="submit">＋ Add task</button>
+        </form>
+
+        <div class="list-heading"><span id="list-label">All tasks</span><span>Sorted by newest</span></div>
+        <div class="task-list" id="task-list"></div>
+        <div class="empty-state" id="empty-state"><div class="empty-icon">✦</div><h3>Nothing on your list yet</h3><p>Add a task above and make a little progress today.</p></div>
+      </section>
+      <footer class="footer"><span>TaskFlow · Make room for what matters.</span><span>Your tasks stay on this device.</span></footer>
+    </main>
+  </div>
+</body>
+</html>
